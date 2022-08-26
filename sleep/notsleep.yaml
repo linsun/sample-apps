@@ -32,7 +32,7 @@ spec:
   - port: 80
     name: http
   selector:
-    app: sleep
+    app: notsleep
 ---
 apiVersion: apps/v1
 kind: Deployment
