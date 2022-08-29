@@ -50,14 +50,16 @@ spec:
     spec:
       affinity:
         podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
                 matchExpressions:
-                  - key: app
-                    operator: In
-                    values:
-                      - productpage
-              topologyKey: kubernetes.io/hostname    
+                - key: app
+                  operator: In
+                  values:
+                  - productpage
+              topologyKey: kubernetes.io/hostname
       terminationGracePeriodSeconds: 0
       serviceAccountName: sleep
       containers:
